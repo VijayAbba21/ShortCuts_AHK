@@ -1,0 +1,95 @@
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#SingleInstance force
+
+
+#Include, c:\Users\abbav\OneDrive\Documents\6.Automation_scripts\NotionV2\BackSpace_Functions.ahk 
+/*
+#Include, c:\Users\abbav\OneDrive\Documents\6.Automation_scripts\NotionV2\Capturing_Functions.ahk 
+#Include, c:\Users\abbav\OneDrive\Documents\6.Automation_scripts\NotionV2\Chrome_Profile.ahk 
+#Include, c:\Users\abbav\OneDrive\Documents\6.Automation_scripts\NotionV2\comments_functions.ahk 
+#Include, c:\Users\abbav\OneDrive\Documents\6.Automation_scripts\NotionV2\Copying_functions.ahk
+#Include, c:\Users\abbav\OneDrive\Documents\6.Automation_scripts\NotionV2\Notions_functions.ahk 
+#Include, c:\Users\abbav\OneDrive\Documents\6.Automation_scripts\NotionV2\Rewind_Forward.ahk 
+*/
+
+/*
+           _      _
+     /\   | |    | |
+    /  \  | |    | |
+   / /\ \ | |    | |
+  / ____ \| |____| |____
+ /_/    \_\______|______|
+
+*/
+
+LAlt & b::
+backspace_left()
+return
+
+LAlt & n::
+backspace_right()
+return  
+
+LAlt & m::
+backspace_left()
+backspace_right()
+return 
+;apple...bannas.apple.bannas
+
+
+LAlt & x::
+cuting_a_word()
+return
+
+
+;--------------------------------- window actives
+/*
+RAlt & c::
+ActivateChromeByProfile("Education")
+return
+
+RAlt & m::
+ActivateChromeByProfile("Minimal")
+return
+
+RAlt & v::
+WinActivate, ahk_exe Code.exe
+return
+
+RAlt & n::
+WinActivate, ahk_exe Notion.exe
+return
+
+;--------------------------------- Capturing
+
+; Capture a Region: Alt + T  (ShareX)
+LAlt & t::
+clipboard := ""
+region_screeenshort("ahk_exe Notion.exe")
+return
+
+; Capture a Region: Alt + R  (GreenShort)
+LAlt & r::
+clipboard := ""
+region_screeenshort_GreenShort("ahk_exe Notion.exe")
+return
+
+; Capture a Region: Alt + E  (iTop)
+LAlt & e::
+clipboard := ""
+region_screeenshort_itop("ahk_exe Notion.exe")
+return
+
+;Last Region: Alt + F (ShareX)
+LAlt & f::
+clipboard := ""
+lastRegionCapture("ahk_exe Notion.exe")
+return
+
+;Gif: Alt + G (ShareX)
+LAlt & g::
+Clipboard := ""
+region_gif_record("ahk_exe Notion.exe")
+return
+
+*/
