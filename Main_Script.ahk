@@ -9,7 +9,8 @@
 #Include, Copying_functions.ahk
 #Include, Notions_functions.ahk
 #Include, Rewind_Forward.ahk
- 
+#Include, All_hot_strings.ahk
+
 /*
            _      _
      /\   | |    | |
@@ -20,6 +21,20 @@
 
 */
 
+/*
+RELOAD
+*/
+!Esc::
+Reload, C:\Users\abbav\OneDrive\Documents\5.Automation_scripts\Notion\Main_Script.ahk
+return 
+
+;************************
+
+LAlt & q::
+generate_url_meanings()
+return
+
+;**********************************************************
 LAlt & b::
 backspace_left()
 return
@@ -37,15 +52,22 @@ LAlt & x::
 cuting_a_word()
 return
 
+LAlt & a::
+copy_a_word()
+return
+
+
 
 ;--------------------------------- window actives
 
 RAlt & c::
 ActivateChromeByProfile("Education")
+; WinActivate, ahk_exe msedge.exe
 return
 
 RAlt & m::
 ActivateChromeByProfile("Minimal")
+; WinActivate, ahk_exe chrome.exe
 return
 
 RAlt & v::
@@ -64,11 +86,23 @@ RAlt & .::
 Send, #^{Right}
 return
 
+RAlt & p::
+WinActivate, ahk_exe Postman.exe
+return
+
+RAlt & t::
+WinActivate, ahk_exe WindowsTerminal.exe
+return
+
+RAlt & d::
+WinActivate, ahk_exe MongoDBCompass.exe
+return
+
 
 ;--------------------------------- Capturing
 
-; Capture a Region: Alt + T  (ShareX)
-LAlt & t::
+; Capture a Region: Alt + S  (ShareX)
+LAlt & s::
 clipboard := ""
 region_screeenshort("ahk_exe Notion.exe")
 return
@@ -86,15 +120,30 @@ region_screeenshort_itop("ahk_exe Notion.exe")
 return
 
 ;Last Region: Alt + F (ShareX)
-LAlt & f::
+LAlt & w::
 clipboard := ""
 lastRegionCapture("ahk_exe Notion.exe")
+return
+
+LAlt & f::
+; Copy_Subtitles_to_notion()
+Copy_Subtitles_to_notion_2()
 return
 
 ;Gif: Alt + G (ShareX)
 LAlt & g::
 Clipboard := ""
 region_gif_record("ahk_exe Notion.exe")
+return
+
+; video Alt + v  (shareX)
+LAlt & d::
+region_video_record("ahk_exe Notion.exe")
+return
+
+;Extract text: LAlt &  T (Power toyes)
+LAlt & t::
+extract_text("ahk_exe Notion.exe")
 return
 
 /*
@@ -124,14 +173,14 @@ return
 LAlt & ,::
 ActivateChromeByProfile("Education")
 send, z
-ActivateChromeByProfile("Minimal")
+WinActivate, ahk_exe chrome.exe
 return
 
 ;forward 3 sec
 LAlt & .::
 ActivateChromeByProfile("Education")
 send, x
-ActivateChromeByProfile("Minimal")
+WinActivate, ahk_exe chrome.exe
 return
 
 
@@ -150,26 +199,27 @@ return
 Send, /togg{Enter}
 return
 
-:*:.tc::
-Send, /togg{Enter}
+::.tc::
+Send, /togg
 Sleep, 200
-Send, {shift Down}
+Send, {Enter}
+Sleep, 200
+Clipboard=%Clipboard%
+Sleep, 200
 Send, ^v
-Send, {Shift Up}
 return
 
 LAlt & v::
 copy_to_vs_code()
 return
 
-;rewind
-LAlt & ,::
-rewind_video_5_seconds("ahk_exe Notion.exe")
-return
 
-;forward
-LAlt & .::
-forward_video_5_seconds("ahk_exe Notion.exe")
+!LButton::
+select_a_word()
+Sleep, 100
+Send, ^b
+Sleep, 100
+Send, ^+H
 return
 
 
@@ -190,6 +240,16 @@ return
 addBoldAndUnderlineAndRed()
 return
 
+;rewind
+LAlt & ,::
+rewind_video_5_seconds("ahk_exe Notion.exe")
+return
+
+;forward
+LAlt & .::
+forward_video_5_seconds("ahk_exe Notion.exe")
+return
+
 ;---
 
 
@@ -208,7 +268,7 @@ return
 #If, WinActive("ahk_exe Code.exe")
 
 :*:jsli:://////////////////////////////////////////////////
-:*:jscm::/*  */ {left 4}
+:*:jscm::/* {Enter} */ {Left 4}
 
 ;copy to Notion
 LAlt & c::
@@ -225,6 +285,11 @@ return
 live_server()
 return
 
+::dup::
+duplicate_workspace()
+
+return
+
 ;rewind
 LAlt & ,::
 rewind_video_5_seconds("ahk_exe Code.exe")
@@ -237,3 +302,49 @@ return
 
 
 ;**********VS Code END**********
+
+;**********Acrobat**********
+
+#If, WinActive("ahk_exe Acrobat.exe")
+
+
+;rewind
+LAlt & ,::
+rewind_video_5_seconds("ahk_exe Acrobat.exe")
+return
+
+;forward
+LAlt & .::
+forward_video_5_seconds("ahk_exe Acrobat.exe")
+return
+
+
+;********************POSTMAN***************************
+
+#If, WinActive("ahk_exe Postman.exe")
+
+;rewind
+LAlt & ,::
+rewind_video_5_seconds("ahk_exe Postman.exe")
+return
+
+;forward
+LAlt & .::
+forward_video_5_seconds("ahk_exe Postman.exe")
+return
+
+;********************WindowsTerminal***************************
+
+#If, WinActive("ahk_exe WindowsTerminal.exe")
+
+;rewind
+LAlt & ,::
+rewind_video_5_seconds("ahk_exe WindowsTerminal.exe")
+return
+
+;forward
+LAlt & .::
+forward_video_5_seconds("ahk_exe WindowsTerminal.exe")
+return
+
+;**********************************quick search

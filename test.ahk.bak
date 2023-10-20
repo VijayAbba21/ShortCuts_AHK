@@ -1,0 +1,7 @@
+#SingleInstance, Force
+SendMode Input
+SetWorkingDir, %A_ScriptDir%
+
+
+;"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
+Send, {#^Left}

@@ -34,7 +34,6 @@ open_PostMan() {
 
 ; SCREEN 3
 Brave_Mediations(){
-	Run, brave.exe C:\Users\abbav\OneDrive\Documents\4.Mediations\Mediation_Project\app.html
 	Run, brave.exe  file:///D:/1.Udemy/2.node-practice/Practice/mediationpage/index.html
 	return
 }
@@ -66,9 +65,7 @@ init() {
 	open_PostMan()
 	Move_Right()
 	;Virtural Desktop 5
-	Pomodoro_Logger()
-	Brave_Mediations()
-	Move_Right()
+
 
 	Send, #^{Left}
 	; SCREEN 3

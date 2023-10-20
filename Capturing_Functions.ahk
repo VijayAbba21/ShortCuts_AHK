@@ -16,6 +16,11 @@ region_screeenshort(window_name) {
 	;CopyUrlAtCurrentTime()
 	clipboard := ""
 	Send, ^{PrintScreen}
+	; Input, outputVar, L1 , {Esc}
+	; if (UserInput = esc)  {
+	; 	MsgBox You pressed eesc
+	; 	return 
+	; }
 	ClipWait,, 1
 	WinActivate, %window_name%
 	Send, {Enter }
@@ -30,9 +35,11 @@ region_screeenshort(window_name) {
 	return
 }
 
+
 ;2-----REGION-----Itop Screenshot
 region_screeenshort_itop(window_name) {
 	;CopyUrlAtCurrentTime()
+	;Send, {Media_Stop}
 	clipboard := ""
 	Send, !o
 	ClipWait,, 1
@@ -68,6 +75,28 @@ region_gif_record(window_name) {
 	clipboard := ""
 	Send, ^!{PrintScreen}
 	ClipWait,, 1
+	WinActivate, %window_name%
+	pastInNotion()
+	return
+}
+
+;5.1-----Video REGION-----SHARE X
+region_video_record(window_name) {
+	;CopyUrlAtCurrentTime()
+	clipboard := ""
+	Send, +{PrintScreen}
+	ClipWait,, 1
+	WinActivate, %window_name%
+	pastInNotion()
+	return
+}
+
+
+;6 extract text  -------------- Power toyes
+extract_text(window_name) {
+	clipboard := ""
+	Send, #+t
+	ClipWait,,1
 	WinActivate, %window_name%
 	pastInNotion()
 	return

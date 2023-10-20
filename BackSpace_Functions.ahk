@@ -20,7 +20,22 @@ backspace_right()  {
 
 cuting_a_word()  {
 	Send,  ^{Left}
-	Send,  +{Right}
+	Sleep, 100
+	Send,  ^+{Right}
 	Send,  ^x
 	return
+}
+
+copy_a_word() {
+	Send,  ^{Left}
+	Sleep, 100
+	Send,  ^+{Right}
+	Send,  ^c
+	return
+}
+
+select_a_word() {
+	Send,  ^{Left}
+	Sleep, 100
+	Send,  ^+{Right}
 }

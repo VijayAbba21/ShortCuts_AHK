@@ -20,13 +20,8 @@ addHeading2AndDividerInNotion(num) {
 
 ; select and turn it into bold & underline In notion
 addBoldAndUnderlineAndRed(){
-	Send, {Shift Down}
-	Send, {Home}
-	Send, {Shift Up}
-	Send, ^u
-	Sleep, 100
 	Send, ^b
-	Sleep, 100
+	Sleep, 300
 	Send, ^+h ; color
 	return
 }
@@ -50,5 +45,14 @@ live_server(){
 	Send, ^r
 	WinActivate, ahk_exe Code.exe
 	Send, ^j
+	return
+}
+
+duplicate_workspace() {
+	Send, ^+p
+	Sleep, 100
+	Send, dupl
+	Sleep, 100
+	Send, {Enter}
 	return
 }
