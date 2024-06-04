@@ -1,0 +1,6 @@
+
+targetWindowTitle := "ahk_class LiveCaptionsDesktopWindow"
+
+WinGetText, capturedText, %targetWindowTitle%
+
+MsgBox, % capturedText

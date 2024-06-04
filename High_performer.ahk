@@ -1,7 +1,7 @@
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 #SingleInstance force
 
-
+#Include, Speak.ahk
 #Include,  BackSpace_Functions.ahk
 #Include,  Capturing_Functions.ahk
 #Include, Chrome_Profile.ahk
@@ -10,6 +10,9 @@
 #Include, Notions_functions.ahk
 #Include, Rewind_Forward.ahk
 #Include, All_hot_strings.ahk
+#Include,  switchVirtualDesk\virtualDesktop.ahk
+
+ 
 ;Appple
 /*
            _      _
@@ -25,8 +28,11 @@
 RELOAD
 */
 !Esc::
-Reload, C:\Users\abbav\OneDrive\Documents\5.Automation_scripts\Notion\Main_Script.ahk
+Reload, C:\Users\abbav\OneDrive\Documents\5.Automation_scripts\Notion\High_performer.ahk
 return
+
+;LAlt & s ; speak
+;LAlt & h ; stop
 
 ;************************
 
@@ -60,13 +66,14 @@ meaning := " meaning"
 Clipboard := % Clipboard meaning
 Sleep, 200
 Send, {LWin}
-Sleep, 1000
-Send, % word
+Sleep, 500
+Send, ^v
 return
 
-;LAlt & Space::
-;Send {Media_Play_Pause}
-;return
+RAlt & Space::
+ActivateChromeByProfile("Education")
+Send {Space}
+return
 ;--------------------------------- window actives
 
 RAlt & c::
@@ -104,23 +111,31 @@ WinActivate, ahk_exe WindowsTerminal.exe
 return
 
 RAlt & d::
-WinActivate, ahk_exe MongoDBCompass.exe
+WinActivate, ahk_exe Docker Desktop.exe
 return
 
+RAlt & w::
+WinActivate, ahk_exe MongoDBCompass.exe
+
 RAlt & i::
-WinActivate, ahk_exe msrdc.exe
+WinActivate, ahk_exe msrdc.exe ;not know
 return
 
 
 RAlt & h::
-WinActivate, ahk_exe mintty.exe
+WinActivate, ahk_exe mintty.exe  ; BASH
+return
+
+;DEV
+RAlt & s:: 
+ActivateChromeByProfile("Development")
 return
 
 ;--------------------------------- Capturing
 ; w is avaliable
 
 ; Capture a Region: Alt + S  (ShareX)
-LAlt & s::
+LAlt & g::
 clipboard := ""
 region_screeenshort("ahk_exe Notion.exe")
 return
@@ -149,7 +164,7 @@ return
 return
 
 ;Gif: Alt + G (ShareX)
-LAlt & g::
+LAlt & u::
 Clipboard := ""
 region_gif_record("ahk_exe Notion.exe")
 return
@@ -254,8 +269,9 @@ return
 addHeading2AndDividerInNotion(3)
 return
 
-!h::
-addBoldAndUnderlineAndRed()
+LAlt & h::
+Send, togg{Enter}
+;addBoldAndUnderlineAndRed()
 return
 
 ;rewind
@@ -412,4 +428,64 @@ return
 ;forward
 LAlt & .::
 forward_video_5_seconds("ahk_exe MongoDBCompass.exe")
+return
+
+;******************Notepad *************************
+
+#If, WinActive("ahk_exe Notepad.exe")
+
+!c::
+Send, ^a
+Sleep, 100
+Send, ^c
+Sleep, 100
+vttContent := Clipboard
+plainText := vttToPlainTextTwo(vttContent)
+Clipboard := % plainText
+Sleep, 200
+Send, ^v
+Sleep, 200
+Send, ^s
+return
+
+!z::
+Send, ^a
+Sleep, 200
+Send, ^c
+Sleep, 200
+ActivateChromeByProfile("Education")
+Click, 445, 970
+Sleep, 100
+Send, ^v
+return
+
+;******************ahk_exe Docker Desktop.exe *************************
+
+#If, WinActive("ahk_exe Docker Desktop.exe")
+
+
+
+;rewind
+LAlt & ,::
+rewind_video_5_seconds("ahk_exe Docker Desktop.exe")
+return
+
+;forward
+LAlt & .::
+forward_video_5_seconds("ahk_exe Docker Desktop.exe")
+return
+
+;******************ahk_exe BRAVE.exe *************************
+
+
+#If, WinActive("ahk_exe brave.exe")
+
+
+LAlt & c::
+Send, ^c
+Sleep, 200
+WinActivate, ahk_exe Code.exe
+Send, {Enter}
+Sleep, 200
+Send, ^v
 return

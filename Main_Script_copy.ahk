@@ -56,8 +56,6 @@ LAlt & a::
 copy_a_word()
 return
 
-
-
 ;--------------------------------- window actives
 
 RAlt & c::
@@ -78,14 +76,6 @@ RAlt & n::
 WinActivate, ahk_exe Notion.exe
 return
 
-RAlt & ,::
-Send, #^{Left}
-return
-
-RAlt & .::
-Send, #^{Right}
-return
-
 RAlt & p::
 WinActivate, ahk_exe Postman.exe
 return
@@ -98,52 +88,8 @@ RAlt & d::
 WinActivate, ahk_exe MongoDBCompass.exe
 return
 
-
-;--------------------------------- Capturing
-
-; Capture a Region: Alt + S  (ShareX)
-LAlt & s::
-clipboard := ""
-region_screeenshort("ahk_exe Notion.exe")
-return
-
-; Capture a Region: Alt + R  (GreenShort)
-LAlt & r::
-clipboard := ""
-region_screeenshort_GreenShort("ahk_exe Notion.exe")
-return
-
-; Capture a Region: Alt + E  (iTop)
-LAlt & e::
-clipboard := ""
-region_screeenshort_itop("ahk_exe Notion.exe")
-return
-
-;Last Region: Alt + F (ShareX)
-LAlt & w::
-clipboard := ""
-lastRegionCapture("ahk_exe Notion.exe")
-return
-
-LAlt & f::
-; Copy_Subtitles_to_notion()
-Copy_Subtitles_to_notion_2()
-return
-
-;Gif: Alt + G (ShareX)
-LAlt & g::
-Clipboard := ""
-region_gif_record("ahk_exe Notion.exe")
-return
-
-; video Alt + v  (shareX)
-LAlt & d::
-region_video_record("ahk_exe Notion.exe")
-return
-
-;Extract text: LAlt &  T (Power toyes)
-LAlt & t::
-extract_text("ahk_exe Notion.exe")
+RAlt & i::
+WinActivate, ahk_exe msrdc.exe
 return
 
 /*
@@ -160,10 +106,6 @@ return
 
 #If, WinActive("ahk_exe chrome.exe")
 
-;copy to Notion
-LAlt & c::
-copy_to_notion()
-return
 
 LAlt & v::
 copy_to_vs_code()
@@ -195,45 +137,8 @@ return
 
 #If, WinActive("ahk_exe Notion.exe")
 
-::.t::
-Send, /togg{Enter}
-return
-
-::.tc::
-Send, /togg
-Sleep, 200
-Send, {Enter}
-Sleep, 200
-Clipboard=%Clipboard%
-Sleep, 200
-Send, ^v
-return
-
 LAlt & v::
 copy_to_vs_code()
-return
-
-
-!LButton::
-select_a_word()
-Sleep, 100
-Send, ^b
-Sleep, 100
-Send, ^+H
-return
-
-
-;Set Heading
-::H.1::
-addHeading2AndDividerInNotion(1)
-return
-
-::H.2::
-addHeading2AndDividerInNotion(2)
-return
-
-::H.3::
-addHeading2AndDividerInNotion(3)
 return
 
 !h::
@@ -272,22 +177,12 @@ return
 
 ;copy to Notion
 LAlt & c::
-copy_to_notion()
+copy_to_notion_3()
 return
 
 ; add /*   */
 LAlt & 6::
 add_comment_to_start_and_end()
-return
-
-;; Live Server
-::li-ser::
-live_server()
-return
-
-::dup::
-duplicate_workspace()
-
 return
 
 ;rewind
@@ -302,21 +197,6 @@ return
 
 
 ;**********VS Code END**********
-
-;**********Acrobat**********
-
-#If, WinActive("ahk_exe Acrobat.exe")
-
-
-;rewind
-LAlt & ,::
-rewind_video_5_seconds("ahk_exe Acrobat.exe")
-return
-
-;forward
-LAlt & .::
-forward_video_5_seconds("ahk_exe Acrobat.exe")
-return
 
 
 ;********************POSTMAN***************************
@@ -348,3 +228,18 @@ forward_video_5_seconds("ahk_exe WindowsTerminal.exe")
 return
 
 ;**********************************quick search
+
+;********************Chrome Ubuntu***************************
+
+
+#If, WinActive("ahk_exe msrdc.exe")
+
+;rewind
+LAlt & ,::
+rewind_video_5_seconds("ahk_exe msrdc.exe")
+return
+
+;forward
+LAlt & .::
+forward_video_5_seconds("ahk_exe msrdc.exe")
+return

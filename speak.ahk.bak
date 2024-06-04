@@ -1,0 +1,17 @@
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#SingleInstance force
+
+Global SAPI := ComObjCreate("SAPI.SpVoice")
+
+
+SVSFlagsAsync := SPF_ASYNC := 1 << 0
+SVSFPurgeBeforeSpeak := SPF_PURGEBEFORESPEAK := 1 << 1
+
+LAlt & g::
+Send, ^c
+SAPI.Speak(Clipboard, SVSFlagsAsync)
+return
+
+LAlt & J::
+SAPI.Speak("", SVSFlagsAsync | SVSFPurgeBeforeSpeak)
+return

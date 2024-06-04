@@ -1,7 +1,26 @@
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-#SingleInstance force
+
+
+openTick() {
+	Run, C:\Program Files (x86)\TickTick\TickTick.exe
+}
+
+open_Chrome() {
+ Run, chrome.exe --profile-directory="Default"  
+ return
+}
+
 open_Chrome_Default() {
- Run, chrome.exe --profile-directory="Default"
+ Run, chrome.exe --profile-directory="Default" https://codedamn.com/ai
+ return
+}
+
+open_Chrome_Default_Cohort2() {
+ Run, chrome.exe --profile-directory="Default" https://app.100xdevs.com/courses/3
+ return
+}
+
+open_Chrome_Default_academy() {
+ Run, chrome.exe --profile-directory="Profile 2" https://academy.pillaicenter.com/members/141035/course/
  return
 }
 
@@ -46,9 +65,11 @@ Pomodoro_Logger() {
 
 
 Move_Right() {
-	Sleep, 1000
+	Sleep, 1500
 	Send, #^{Right}
 }
+
+
 
 init() {
 
@@ -95,6 +116,5 @@ init() {
 	open_Notion()Button
 
 }
-init()
 
 

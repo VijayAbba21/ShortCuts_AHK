@@ -1,0 +1,56 @@
+; Ensure a single instance of the script
+#SingleInstance Force
+
+; Prompt the user to enter the number of minutes
+InputBox, Minutes, Shutdown Timer, Enter the number of minutes until shutdown:
+
+; Check if the user clicked Cancel or didn't enter a valid number
+if (ErrorLevel or Minutes <= 0)
+{
+    MsgBox, Cancelled or invalid input. Exiting script.
+    ExitApp
+}
+
+; Convert the input minutes to milliseconds
+Milliseconds := Minutes * 60000
+
+; Create a GUI to show the countdown timer and cancel button
+Gui, Add, Text, vCountdown w300 h30 Center, The computer will shut down in %Minutes% minute(s).
+Gui, Add, Button, gCancelShutdown w100 h30, Cancel Shutdown
+Gui, Show, , Shutdown Timer
+
+; Set a timer to update the countdown every second
+SetTimer, UpdateCountdown, 1000
+
+; Set a timer to execute the shutdown after the specified time
+SetTimer, Shutdown, %Milliseconds%
+
+; Define the shutdown label
+Shutdown:
+    Gui, Destroy
+    Shutdown, 9 ; Force shutdown without confirmation
+return
+
+; Define the UpdateCountdown label to update the GUI countdown timer
+UpdateCountdown:
+    Global Minutes, Milliseconds
+    Milliseconds -= 1000
+    RemainingMinutes := Floor(Milliseconds / 60000)
+    RemainingSeconds := Floor((Milliseconds / 1000) - (RemainingMinutes * 60))
+    GuiControl,, Countdown, The computer will shut down in %RemainingMinutes% minute(s) and %RemainingSeconds% second(s).
+
+    ; If the timer reaches zero, shut down immediately
+    if (Milliseconds <= 0)
+    {
+        GoSub, Shutdown
+    }
+return
+
+; Define the CancelShutdown label to cancel the shutdown
+CancelShutdown:
+    SetTimer, Shutdown, Off
+    SetTimer, UpdateCountdown, Off
+    Gui, Destroy
+    MsgBox, Shutdown has been cancelled.
+    ExitApp
+return

@@ -14,7 +14,9 @@ return
 ::git.script::"git": "git add * && git commit && git push -u origin"
 ::ki.pr::sudo fuser -k 3000/tcp
 ::nfs::make notes from this subtitles
-::setvpn::YgupQwNYw9v4ADL
-
-::n.w::npm run watch
-::n.s::npm run start
+::a.i::
+send, "
+send, ^v
+send, "
+send make it concise
+return
