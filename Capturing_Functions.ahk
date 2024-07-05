@@ -32,15 +32,7 @@ region_screeenshort(window_name) {
 
 	WinActivate, %window_name%
 	down_in_Word(window_name)
-	Send, {Enter }
-    Sleep, 500
-    Send, {Up}
-    Sleep, 300
-    Send, ^v
-    Sleep, 300
-    Send, {Down}
-    Sleep, 500
-    Send, {Enter}
+ 	pastInNotion()
 	return
 }
 
