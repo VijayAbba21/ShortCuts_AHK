@@ -11,6 +11,13 @@ pastInNotion() {
     return 
 }
 
+down_in_Word(window_name){
+	if (window_name = "ahk_exe WINWORD.EXE") {
+    	; Send the down arrow key
+    	Send, {Down}
+	}
+}
+
 ;1-----REGION-----SHARE X
 region_screeenshort(window_name) {
 	;CopyUrlAtCurrentTime()
@@ -22,7 +29,9 @@ region_screeenshort(window_name) {
 	; 	return 
 	; }
 	ClipWait,, 1
+
 	WinActivate, %window_name%
+	down_in_Word(window_name)
 	Send, {Enter }
     Sleep, 500
     Send, {Up}
@@ -44,6 +53,9 @@ region_screeenshort_itop(window_name) {
 	Send, !o
 	ClipWait,, 1
 	WinActivate, %window_name%
+
+	down_in_Word(window_name)
+
 	pastInNotion()
 	return
 }
@@ -55,6 +67,9 @@ region_screeenshort_GreenShort(window_name) {
 	Send, !{PrintScreen}
 	ClipWait,, 1
 	WinActivate, %window_name%
+
+	down_in_Word(window_name)
+
 	pastInNotion()
 	return
 }
@@ -65,6 +80,9 @@ lastRegionCapture(window_name) {
 	Send, ^+{PrintScreen}
 	ClipWait,,1
 	WinActivate, %window_name%
+
+	down_in_Word(window_name)
+
 	pastInNotion()
 	return
 }
@@ -76,6 +94,10 @@ region_gif_record(window_name) {
 	Send, ^!{PrintScreen}
 	ClipWait,, 1
 	WinActivate, %window_name%
+
+	
+	down_in_Word(window_name)
+	
 	pastInNotion()
 	return
 }
@@ -87,6 +109,9 @@ region_video_record(window_name) {
 	Send, +{PrintScreen}
 	ClipWait,, 1
 	WinActivate, %window_name%
+
+	down_in_Word(window_name)
+
 	pastInNotion()
 	return
 }
@@ -98,6 +123,9 @@ extract_text(window_name) {
 	Send, #+t
 	ClipWait,,1
 	WinActivate, %window_name%
+
+	down_in_Word(window_name)
+
 	pastInNotion()
 	return
 }

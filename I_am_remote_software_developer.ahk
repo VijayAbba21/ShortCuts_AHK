@@ -91,6 +91,7 @@ WinActivate, ahk_exe Code.exe
 return
 
 RAlt & n::
+; WinActivate, ahk_exe WINWORD.EXE
 WinActivate, ahk_exe Notion.exe
 return
 
@@ -135,15 +136,18 @@ return
 ; w is avaliable
 
 ; Capture a Region: Alt + S  (ShareX)
-LAlt & g::
+LAlt & r::
 clipboard := ""
 region_screeenshort("ahk_exe Notion.exe")
+; region_screeenshort("ahk_exe WINWORD.EXE")
+; region_screeenshort("ahk_exe Joplin.exe")
 return
 
 ; Capture a Region: Alt + R  (GreenShort)
-LAlt & r::
+LAlt & g::
 clipboard := ""
 region_screeenshort_GreenShort("ahk_exe Notion.exe")
+; region_screeenshort_GreenShort("ahk_exe Joplin.exe")
 return
 
 ; Capture a Region: Alt + E  (iTop)
@@ -156,6 +160,7 @@ return
 LAlt & f::
 clipboard := ""
 lastRegionCapture("ahk_exe Notion.exe")
+; lastRegionCapture("ahk_exe Joplin.exe")
 return
 
 ; LAlt & f::
@@ -179,6 +184,13 @@ LAlt & t::
 extract_text("ahk_exe Notion.exe")
 return
 ; ✅
+
+/*
+WORD
+*/
+
+
+
 /*
    ______ _
   / ____| |
@@ -474,6 +486,145 @@ return
 LAlt & .::
 forward_video_5_seconds("ahk_exe Docker Desktop.exe")
 return
+
+;******************ahk_exe BRAVE.exe *************************
+
+
+
+;******************ahk_exe WINWORD.EXE *************************
+
+#If, WinActive("ahk_exe WINWORD.EXE")
+
+;rewind
+LAlt & ,::
+rewind_video_5_seconds("ahk_exe WINWORD.EXE")
+return
+
+;forward
+LAlt & .::
+forward_video_5_seconds("ahk_exe WINWORD.EXE")
+return
+
+; //////////////////////////////////////////////////
+ 
+
+; Capture a Region: Alt + S  (ShareX)
+LAlt & r::
+clipboard := ""
+
+region_screeenshort("ahk_exe WINWORD.EXE")
+; region_screeenshort("ahk_exe Joplin.exe")
+return
+
+; Capture a Region: Alt + R  (GreenShort)
+LAlt & g::
+clipboard := ""
+region_screeenshort_GreenShort("ahk_exe WINWORD.EXE")
+; region_screeenshort_GreenShort("ahk_exe Joplin.exe")
+return
+
+; Capture a Region: Alt + E  (iTop)
+LAlt & e::
+clipboard := ""
+region_screeenshort_itop("ahk_exe WINWORD.EXE")
+return
+
+;Last Region: Alt + F (ShareX)
+LAlt & f::
+clipboard := ""
+lastRegionCapture("ahk_exe WINWORD.EXE")
+; lastRegionCapture("ahk_exe Joplin.exe")
+return
+
+; LAlt & f::
+;Copy_Subtitles_to_notion()
+; Copy_Subtitles_to_notion_2()
+return
+
+;Gif: Alt + G (ShareX)
+LAlt & u::
+Clipboard := ""
+region_gif_record("ahk_exe WINWORD.EXE")
+return
+
+; video Alt + v  (shareX)
+LAlt & d::
+region_video_record("ahk_exe WINWORD.EXE")
+return
+
+;Extract text: LAlt &  T (Power toyes)
+LAlt & t::
+extract_text("ahk_exe WINWORD.EXE")
+return
+; ✅
+;******************ahk_exe Evernote  *************************
+
+#If, WinActive("ahk_exe Evernote.exe")
+
+;rewind
+LAlt & ,::
+rewind_video_5_seconds("ahk_exe Evernote.exe")
+return
+
+;forward
+LAlt & .::
+forward_video_5_seconds("ahk_exe Evernote.exe")
+return
+
+; //////////////////////////////////////////////////
+ 
+
+; Capture a Region: Alt + S  (ShareX)
+LAlt & r::
+clipboard := ""
+
+region_screeenshort("ahk_exe Evernote.exe")
+; region_screeenshort("ahk_exe Joplin.exe")
+return
+
+; Capture a Region: Alt + R  (GreenShort)
+LAlt & g::
+clipboard := ""
+region_screeenshort_GreenShort("ahk_exe Evernote.exe")
+; region_screeenshort_GreenShort("ahk_exe Joplin.exe")
+return
+
+; Capture a Region: Alt + E  (iTop)
+LAlt & e::
+clipboard := ""
+region_screeenshort_itop("ahk_exe Evernote.exe")
+return
+
+;Last Region: Alt + F (ShareX)
+LAlt & f::
+clipboard := ""
+lastRegionCapture("ahk_exe Evernote.exe")
+; lastRegionCapture("ahk_exe Joplin.exe")
+return
+
+; LAlt & f::
+;Copy_Subtitles_to_notion()
+; Copy_Subtitles_to_notion_2()
+return
+
+;Gif: Alt + G (ShareX)
+LAlt & u::
+Clipboard := ""
+region_gif_record("ahk_exe Evernote.exe")
+return
+
+; video Alt + v  (shareX)
+LAlt & d::
+region_video_record("ahk_exe Evernote.exe")
+return
+
+;Extract text: LAlt &  T (Power toyes)
+LAlt & t::
+extract_text("ahk_exe Evernote.exe")
+return
+; ✅
+
+
 
 ;******************ahk_exe BRAVE.exe *************************
 
