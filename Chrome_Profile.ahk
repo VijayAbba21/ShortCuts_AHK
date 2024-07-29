@@ -12,6 +12,9 @@ ActivateChromeByProfile(target_profile) {
     }
 }
 
+; Education 
+
+
 ;!l::ActivateChromeByProfile("Education")
 
 Chrome_GetProfile(hwnd:=""){

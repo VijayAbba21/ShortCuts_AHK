@@ -28,13 +28,14 @@ copy_to_notion_2() {
 copy_to_notion_3() {
 	Send, ^c
 	Sleep, 100
-	WinActivate, ahk_exe Notion.exe
-	Send, ^v
-	Sleep, 100
-	Send, {Space}
+	WinActivate, ahk_exe brave.exe
+	Sleep, 20
+	Send, {Ctrl down}{ShiftDown}v{ShiftDown}{Ctrl up}
+	Sleep, 20
+	Send, {Enter}
 	return
 }
-	
+
 ;copy to VS Code to End
 jsComment  := " // "
 copy_to_vs_code() {

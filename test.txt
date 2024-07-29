@@ -1,0 +1,62 @@
+
+254 . Deploying to the Cloud
+
+
+255 . Serverless vs Containers
+
+
+256 . Virtual Machines
+
+
+257 . What is a Container?
+
+
+258 . Installing Docker
+
+
+259 . Running Our First Docker Container
+
+
+260 . Your DockerHub Account
+
+
+261 . Creating a Dockerfile
+
+
+262 . Improving Our Dockerfile With Layers
+
+
+263 . Installing Only Production Dependencies
+
+
+264 . Updating Our API URL
+
+
+265 . Building NASA Project Docker Image
+
+
+266 . Running NASA Project in a Container
+
+
+267 . Pushing Images to Docker Hub
+
+
+268 . Exploring Amazon Web Services
+
+
+269 . Creating an EC2 Instance 1
+
+
+270 . Creating an EC2 Instance 2: Security
+
+
+271 . What is SSH?
+
+
+272 . Connecting To Our EC2 Instance With SSH
+
+
+273 . Setting Up Our EC2 Server
+
+
+274 . Deploying Our NASA API

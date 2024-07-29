@@ -31,8 +31,11 @@ region_screeenshort(window_name) {
 	ClipWait,, 1
 
 	WinActivate, %window_name%
+
 	down_in_Word(window_name)
  	pastInNotion()
+	down_in_Word(window_name)
+	
 	return
 }
 
@@ -47,8 +50,9 @@ region_screeenshort_itop(window_name) {
 	WinActivate, %window_name%
 
 	down_in_Word(window_name)
-
 	pastInNotion()
+	down_in_Word(window_name)
+
 	return
 }
 
@@ -61,8 +65,9 @@ region_screeenshort_GreenShort(window_name) {
 	WinActivate, %window_name%
 
 	down_in_Word(window_name)
-
 	pastInNotion()
+	down_in_Word(window_name)
+
 	return
 }
 
@@ -74,8 +79,9 @@ lastRegionCapture(window_name) {
 	WinActivate, %window_name%
 
 	down_in_Word(window_name)
-
 	pastInNotion()
+	down_in_Word(window_name)
+
 	return
 }
 
@@ -89,8 +95,9 @@ region_gif_record(window_name) {
 
 	
 	down_in_Word(window_name)
-	
 	pastInNotion()
+	down_in_Word(window_name)
+
 	return
 }
 
@@ -103,8 +110,9 @@ region_video_record(window_name) {
 	WinActivate, %window_name%
 
 	down_in_Word(window_name)
-
 	pastInNotion()
+	down_in_Word(window_name)
+
 	return
 }
 
@@ -117,7 +125,8 @@ extract_text(window_name) {
 	WinActivate, %window_name%
 
 	down_in_Word(window_name)
-
 	pastInNotion()
+	down_in_Word(window_name)
+
 	return
 }

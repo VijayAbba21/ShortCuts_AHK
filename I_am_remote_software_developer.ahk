@@ -12,6 +12,22 @@
 #Include, All_hot_strings.ahk
 #Include,  switchVirtualDesk\virtualDesktop.ahk
 
+
+; Cool
+
+ActivateChromeByProfileEducation() {
+    static acc_lib := Acc_Init()
+    WinGet, ChromeWindow, List, ahk_exe chrome.exe
+    Loop % ChromeWindow
+    {
+        this_hwnd := ChromeWindow%A_Index%
+        if (Chrome_GetProfile(this_hwnd) == "Education") {
+            WinActivate % "ahk_id " this_hwnd
+            break
+        }
+    }
+}
+
  
 ;Appple
 /*
@@ -71,13 +87,13 @@ Send, ^v
 return
 
 RAlt & Space::
-ActivateChromeByProfile("Education")
+ActivateChromeByProfileEducation()
 Send {Space}
 return
 ;--------------------------------- window actives
 
 RAlt & c::
-ActivateChromeByProfile("Education")
+ActivateChromeByProfileEducation()
 ; WinActivate, ahk_exe msedge.exe
 return
 
@@ -92,7 +108,8 @@ return
 
 RAlt & n::
 ; WinActivate, ahk_exe WINWORD.EXE
-WinActivate, ahk_exe Notion.exe
+; WinActivate, ahk_exe Notion.exe
+WinActivate, ahk_exe brave.exe
 return
 
 ; RAlt & ,::
@@ -138,7 +155,7 @@ return
 ; Capture a Region: Alt + S  (ShareX)
 LAlt & r::
 clipboard := ""
-region_screeenshort("ahk_exe Notion.exe")
+region_screeenshort("ahk_exe brave.exe")
 ; region_screeenshort("ahk_exe WINWORD.EXE")
 ; region_screeenshort("ahk_exe Joplin.exe")
 return
@@ -146,20 +163,20 @@ return
 ; Capture a Region: Alt + R  (GreenShort)
 LAlt & g::
 clipboard := ""
-region_screeenshort_GreenShort("ahk_exe Notion.exe")
+region_screeenshort_GreenShort("ahk_exe brave.exe")
 ; region_screeenshort_GreenShort("ahk_exe Joplin.exe")
 return
 
 ; Capture a Region: Alt + E  (iTop)
 LAlt & e::
 clipboard := ""
-region_screeenshort_itop("ahk_exe Notion.exe")
+region_screeenshort_itop("ahk_exe brave.exe")
 return
 
 ;Last Region: Alt + F (ShareX)
 LAlt & f::
 clipboard := ""
-lastRegionCapture("ahk_exe Notion.exe")
+lastRegionCapture("ahk_exe brave.exe")
 ; lastRegionCapture("ahk_exe Joplin.exe")
 return
 
@@ -171,17 +188,17 @@ return
 ;Gif: Alt + G (ShareX)
 LAlt & u::
 Clipboard := ""
-region_gif_record("ahk_exe Notion.exe")
+region_gif_record("ahk_exe brave.exe")
 return
 
 ; video Alt + v  (shareX)
 LAlt & d::
-region_video_record("ahk_exe Notion.exe")
+region_video_record("ahk_exe brave.exe")
 return
 
 ;Extract text: LAlt &  T (Power toyes)
 LAlt & t::
-extract_text("ahk_exe Notion.exe")
+extract_text("ahk_exe brave.exe")
 return
 ; ✅
 
@@ -216,14 +233,14 @@ return
 
 ;rewindahk_exe chrome.exe
 LAlt & ,::
-ActivateChromeByProfile("Education")
+ActivateChromeByProfileEducation()
 send, z
 WinActivate, ahk_exe chrome.exe
 return
 
 ;forward 3 sec
 LAlt & .::
-ActivateChromeByProfile("Education")
+ActivateChromeByProfileEducation()
 send, x
 WinActivate, ahk_exe chrome.exe
 return
@@ -465,7 +482,7 @@ Send, ^a
 Sleep, 200
 Send, ^c
 Sleep, 200
-ActivateChromeByProfile("Education")
+ActivateChromeByProfileEducation()
 Click, 445, 970
 Sleep, 100
 Send, ^v
@@ -631,12 +648,102 @@ return
 
 #If, WinActive("ahk_exe brave.exe")
 
+; *Alt::Send {Blind}{Alt down}
+; *Alt up::
+; 	if InStr(A_PriorKey,"Alt")
+; 		Send {Blind}{Ctrl}{Alt up}  ; "Mask" the Alt-up event.
+; 	else
+; 		Send {Blind}{Alt up}
+; 	return
 
-LAlt & c::
-Send, ^c
-Sleep, 200
-WinActivate, ahk_exe Code.exe
+~Alt::Send {Blind}{vkE8}
+~Ctrl::Send {Blind}{vkE8}
+
+
+:*:c.n::Container-Name
+:*:c.i::Container-ID
+
+:*:i.n::Image-Name
+:*:i.i::Image-ID
+
+
+:*:.c::/co{Enter}
+
+
+LAlt & i::
+ActivateChromeByProfileEducation()
+Clipboard := " "
+MouseMove, 720 , 1250
+; MouseMove, 420 , 1150
+Click, 3
+copy_to_notion_3()
+Sleep, 150
+Send, +{Space}
+MouseMove, 500 , 600
 Send, {Enter}
-Sleep, 200
-Send, ^v
 return
+
+;rewind
+LAlt & ,::
+rewind_video_5_seconds("ahk_exe brave.exe")
+return
+
+;forward
+LAlt & .::
+
+;//////////////////////////////////////////////////
+
+forward_video_5_seconds("ahk_exe brave.exe")
+return
+
+; Capture a Region: Alt + S  (ShareX)
+LAlt & r::
+clipboard := ""
+
+region_screeenshort("ahk_exe brave.exe")
+return
+
+; Capture a Region: Alt + R  (GreenShort)
+LAlt & g::
+clipboard := ""
+region_screeenshort_GreenShort("ahk_exe brave.exe")
+return
+
+; Capture a Region: Alt + E  (iTop)
+LAlt & e::
+clipboard := ""
+region_screeenshort_itop("ahk_exe brave.exe")
+return
+
+;Last Region: Alt + F (ShareX)
+Alt & f::
+clipboard := ""
+lastRegionCapture("ahk_exe brave.exe")
+return
+
+;Last Region: f5
+F1::
+clipboard := ""
+lastRegionCapture("ahk_exe brave.exe")
+return
+
+;Gif: Alt + G (ShareX)
+LAlt & u::
+Clipboard := ""
+region_gif_record("ahk_exe brave.exe")
+return
+
+; video Alt + v  (shareX)
+LAlt & d::
+region_video_record("ahk_exe brave.exe")
+return
+
+;Extract text: LAlt &  T (Power toyes)
+LAlt & t::
+extract_text("ahk_exe brave.exe")
+return
+; ✅
+
+
+; Change Coool Edducation
+; I_am and rewind_function
