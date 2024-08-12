@@ -736,6 +736,7 @@ Send, .
 Sleep, 100
 Send, ^v
 Sleep, 100
+Send, {Space}
 Send, {Enter}
 Sleep, 100
 return
