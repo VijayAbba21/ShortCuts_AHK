@@ -1,17 +1,46 @@
+copyTimeStamp(window_name){
+	clipboard := ""
+	ActivateChromeByProfileEducation()
+	Send, {F13}
+	Sleep, 100
+	WinActivate, %window_name%
+    Send, ^v
+	Sleep, 100
+}
+
+
 pastInNotion() {
     Send, {Enter }
-    Sleep, 500
+    Sleep, 100
     Send, {Up}
-    Sleep, 300
+    Sleep, 100
     Send, ^v
-    Sleep, 300
+    Sleep, 100
     Send, {Down}
-    Sleep, 500
+    Sleep, 100
     Send, {Enter}
 	Sleep, 100
-    Send, {Enter}
+	Send, {.}{Space}
+	clipboard := ""
     return 
 }
+
+pastImageLinkWithDOt() {
+	ClipWait,,1
+    Sleep, 100
+    Send, ^v
+    Sleep, 100
+    Send, {Enter}
+	Sleep, 100
+	Send, {Space}
+    Sleep, 100
+	Send, {Enter}
+	Sleep, 100
+	Send, {Enter}
+    return 
+}
+
+
 
 down_in_Word(window_name){
 	if (window_name = "ahk_exe WINWORD.EXE") {
@@ -73,15 +102,7 @@ region_screeenshort_GreenShort(window_name) {
 	return
 }
 
-copyTimeStamp(window_name){
-	clipboard := ""
-	ActivateChromeByProfileEducation()
-	Send, {F13}
-	Sleep, 300
-	WinActivate, %window_name%
-    Send, ^v
-	Sleep, 100
-}
+
 
 ;4----Fixed REGION------ SHARE X
 fixedRegionCapture(window_name) {
@@ -92,10 +113,8 @@ fixedRegionCapture(window_name) {
 	ClipWait,,1
 	WinActivate, %window_name%
 
-	down_in_Word(window_name)  
 	pastInNotion()
-	down_in_Word(window_name) 
-
+	pastImageLinkWithDOt()
 	return
 }
 
