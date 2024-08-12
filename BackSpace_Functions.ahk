@@ -16,6 +16,13 @@ backspace_right()  {
 	return
 }
 
+backspace_space()  {
+	Send,  {Home}
+	Send,  {Backspace}
+	Send, {Space}
+	return
+}
+
 ;  ------------------------  Cut  a  word
 
 cuting_a_word()  {

@@ -13,7 +13,7 @@
 #Include,  switchVirtualDesk\virtualDesktop.ahk
 
 
-; Cool
+; Cool ; Education ; Person 1
 
 ActivateChromeByProfileEducation() {
     static acc_lib := Acc_Init()
@@ -21,7 +21,7 @@ ActivateChromeByProfileEducation() {
     Loop % ChromeWindow
     {
         this_hwnd := ChromeWindow%A_Index%
-        if (Chrome_GetProfile(this_hwnd) == "Education") {
+        if (Chrome_GetProfile(this_hwnd) == "Cool") {
             WinActivate % "ahk_id " this_hwnd
             break
         }
@@ -61,10 +61,9 @@ LAlt & b::
 backspace_left()
 return
 
-
-
 LAlt & n::
-backspace_right()
+;backspace_right()
+backspace_space()
 return
 
 LAlt & m::
@@ -161,7 +160,7 @@ region_screeenshort("ahk_exe brave.exe")
 return
 
 ; Capture a Region: Alt + R  (GreenShort)
-LAlt & g::
+LAlt & o::
 clipboard := ""
 region_screeenshort_GreenShort("ahk_exe brave.exe")
 ; region_screeenshort_GreenShort("ahk_exe Joplin.exe")
@@ -173,8 +172,16 @@ clipboard := ""
 region_screeenshort_itop("ahk_exe brave.exe")
 return
 
-;Last Region: Alt + F (ShareX)
+;FIXED Region: Alt + F (ShareX)
 LAlt & f::
+clipboard := ""
+fixedRegionCapture("ahk_exe brave.exe")
+; lastRegionCapture("ahk_exe Joplin.exe")
+return
+
+
+;last Region: Alt + F (ShareX)
+LAlt & g::
 clipboard := ""
 lastRegionCapture("ahk_exe brave.exe")
 ; lastRegionCapture("ahk_exe Joplin.exe")
@@ -183,7 +190,7 @@ return
 ; LAlt & f::
 ;Copy_Subtitles_to_notion()
 ; Copy_Subtitles_to_notion_2()
-return
+;return
 
 ;Gif: Alt + G (ShareX)
 LAlt & u::
@@ -704,7 +711,7 @@ region_screeenshort("ahk_exe brave.exe")
 return
 
 ; Capture a Region: Alt + R  (GreenShort)
-LAlt & g::
+LAlt & o::
 clipboard := ""
 region_screeenshort_GreenShort("ahk_exe brave.exe")
 return
@@ -714,11 +721,51 @@ LAlt & e::
 clipboard := ""
 region_screeenshort_itop("ahk_exe brave.exe")
 return
-
+;///////////**********************/////////;
+;///////////**********************/////////;
 ;Last Region: Alt + F (ShareX)
-Alt & f::
+;FIXED Region: Alt + F (ShareX)
+LAlt & f::
+clipboard := ""
+fixedRegionCapture("ahk_exe brave.exe")
+; lastRegionCapture("ahk_exe Joplin.exe")
+return
+
+RAlt & f::
+Send, . 
+Sleep, 100
+Send, ^v
+Sleep, 100
+Send, {Enter}
+Sleep, 100
+return
+
+NumpadDot::
+clipboard := ""
+fixedRegionCapture("ahk_exe brave.exe")
+; lastRegionCapture("ahk_exe Joplin.exe")
+return
+
+!NumpadDot::
+Send, . 
+Sleep, 100
+Send, ^v
+return
+
+F4::
+clipboard := ""
+fixedRegionCapture("ahk_exe brave.exe")
+; lastRegionCapture("ahk_exe Joplin.exe")
+return
+;///////////**********************/////////;
+;//////////////////////////////////////////////////
+
+
+;last Region: Alt + F (ShareX)
+LAlt & g::
 clipboard := ""
 lastRegionCapture("ahk_exe brave.exe")
+; lastRegionCapture("ahk_exe Joplin.exe")
 return
 
 ;Last Region: f5

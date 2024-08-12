@@ -8,6 +8,8 @@ pastInNotion() {
     Send, {Down}
     Sleep, 500
     Send, {Enter}
+	Sleep, 100
+    Send, {Enter}
     return 
 }
 
@@ -71,10 +73,36 @@ region_screeenshort_GreenShort(window_name) {
 	return
 }
 
-;4----Last REGION------ SHARE X
-lastRegionCapture(window_name) {
+copyTimeStamp(window_name){
+	clipboard := ""
+	ActivateChromeByProfileEducation()
+	Send, {F13}
+	Sleep, 300
+	WinActivate, %window_name%
+    Send, ^v
+	Sleep, 100
+}
+
+;4----Fixed REGION------ SHARE X
+fixedRegionCapture(window_name) {
+	copyTimeStamp(window_name)
+
 	clipboard := ""
 	Send, ^+{PrintScreen}
+	ClipWait,,1
+	WinActivate, %window_name%
+
+	down_in_Word(window_name)  
+	pastInNotion()
+	down_in_Word(window_name) 
+
+	return
+}
+
+;4----last REGION------ SHARE X
+lastRegionCapture(window_name) {
+	clipboard := ""
+	Send, ^+x
 	ClipWait,,1
 	WinActivate, %window_name%
 

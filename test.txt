@@ -60,3 +60,41 @@
 
 
 274 . Deploying Our NASA API
+
+
+
+ 
+01
+01
+06
+
+
+min
+20
+44
+16
+24
+49
+20
+41
+55
+40
+02
+17
+
+Seconds
+23
+13
+16
+59
+19
+08
+34
+56
+10
+22
+57
+
+5 hours, 33 minutes, and 17 seconds.
+
+
